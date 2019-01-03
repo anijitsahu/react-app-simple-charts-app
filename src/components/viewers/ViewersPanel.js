@@ -40,7 +40,7 @@ class ViewersPanel extends Component {
 	handleChange(event) {
 		event.persist()
 		let { id, value } = event.target
-		console.log('function reached... value is', id, ' and value', value)
+		// console.log('function reached... value is', id, ' and value', value)
 
 		let channelInfoNew = [...this.state.channelInfo]
 
@@ -51,7 +51,7 @@ class ViewersPanel extends Component {
 		})
 
 		this.setState({ channelInfo: channelInfoNew }, () => {
-			console.log('State is updated', this.state)
+			// console.log('State is updated', this.state)
 			this.props.updateCount(channelInfoNew)
 		})
 	}
@@ -60,8 +60,9 @@ class ViewersPanel extends Component {
 		let { channelInfo } = this.state
 
 		return (
-			<div className="viewers-panel basic-padding"> Hourwise Channel watching details
-			<div className="view-distribution">
+			<div className="viewers-panel basic-padding">
+				<div className="viewers-panel-title">Hourwise channel watching details</div>
+				<div className="view-distribution">
 					{
 						channelInfo.map((ele) => {
 							return (

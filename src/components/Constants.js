@@ -25,9 +25,13 @@ class Constants {
       'rgba(255, 159, 64, 1)'
     ]
 
+    // labels and data related constants
     this.labels = ["Star Jalsha", "Star Sports", "National Geographic", "Others"]
     this.data = [6, 2, 5, 11]
     this.borderWidth = 1
+
+    this.datasetLabel = "Hourwise Channel watching distribution"
+    this.title = "Hourwise channel watching distribution graph"
   }
 }
 

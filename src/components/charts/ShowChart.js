@@ -1,11 +1,15 @@
 import React from 'react'
-import { Bar, Doughnut, Pie } from 'react-chartjs-2';
+import { Doughnut, Pie } from 'react-chartjs-2';
 
+
+// Constants
+import Constants from '../Constants'
 
 const ShowChart = (props) => {
 
 	let { chartType, chartData } = props
 
+	let allConstants = new Constants()
 	let options = {
 		maintainAspectRatio: false,
 		legend: {
@@ -13,6 +17,10 @@ const ShowChart = (props) => {
 			labels: {
 				boxWidth: 20
 			}
+		},
+		title: {
+			display: true,
+			text: allConstants.title
 		}
 	}
 	const chooseChart = () => {
@@ -22,9 +30,7 @@ const ShowChart = (props) => {
 			case 'pie':
 				return <Pie data={chartData} options={options} />;
 			case 'doughnut':
-				return <Doughnut data={chartData} options={options} />;
-			case 'bar':
-				return <Bar data={chartData} options={options} />;
+				return <Doughnut data={chartData} options={options} />;			
 		}
 	}
 

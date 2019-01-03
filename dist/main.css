@@ -94,8 +94,11 @@ input[type=text] {
 /* Viewers Panel relted */
 
 .viewers-panel {
-  text-transform: capitalize;
   border-right: solid 1px #ddd;
+}
+
+.viewers-panel-title {
+  text-align: center;
 }
 
 .view-distribution {
@@ -169,6 +172,11 @@ input[type=range]::-moz-range-track {
 /* media queries */
 @media screen and (max-width: 500px) {
 
- 
+  .content-div {
+    grid-template-columns: 1fr;
+  }
+  .viewers-panel {
+    border-bottom: solid 1px #ddd;
+  }
   
 }

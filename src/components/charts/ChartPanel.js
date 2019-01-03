@@ -23,7 +23,7 @@ class ChartPanel extends Component {
 			chartData: {
 				labels,
 				datasets: [{
-					label: "Hourwise Channel watching distribution",
+					label: this.allConstants.datasetLabel,
 					data,
 					backgroundColor: this.allConstants.backgroundColor,
 					borderColor: this.allConstants.borderColor,
@@ -53,7 +53,7 @@ class ChartPanel extends Component {
 
 	render() {
 		let { chartData, chartType } = this.state
-		let chartTypes = ['pie', 'doughnut', 'bar']
+		let chartTypes = ['pie', 'doughnut']
 		// let showChart = this.chooseChart()
 		console.log('state in chart Panel', this.state)
 
