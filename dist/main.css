@@ -1,0 +1,179 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700);
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 2%;
+
+  border: solid 1px #ccc;
+  box-shadow: 3px 5px 22px rgba(0, 0 , 0 , 0.5);
+}
+
+.header {
+  display: grid;
+  background-color: #ab14ab;
+  color: #fff;
+
+  grid-template-columns:1fr;
+  padding: 1em;
+}
+
+
+/* title of the application related */
+.title {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.bold-title {
+  font-weight: 700;
+}
+
+input[type=text] {
+  padding: 1.9em;
+  font-size: 0.7em;
+  letter-spacing: 1px;  
+}
+
+
+/* content div related */
+.content-div {
+  display: grid;
+  grid-template-columns:  1fr 1fr;
+}
+
+/* Charts related */
+.chart-container {
+  text-transform: capitalize;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.chart-type-div {
+  justify-self: end;
+}
+
+.chart-type {
+  font-size: 0.6em;
+  /* padding: 10px; */
+  text-transform: uppercase;
+}
+
+.chart-type:hover {
+  color: #ab14ab;
+  cursor: pointer;
+}
+
+.separator {
+  color: #aaa;
+}
+
+.basic-padding {
+  padding: 1em;
+}
+
+
+/* Viewers Panel relted */
+
+.viewers-panel {
+  text-transform: capitalize;
+  border-right: solid 1px #ddd;
+}
+
+.view-distribution {
+  margin: 10px;
+}
+
+.change-count {
+  display: grid;
+  align-items: center;
+  font-size: 0.9em;
+  grid-template-columns: 1fr auto;
+}
+
+
+/* scroll bar related */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 8px;
+}
+
+/* Input type range related */
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  /* -webkit-appearance: none; */
+  height: 10px;
+  width: 5px;
+  background: #ab14ab;
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  /* box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; Add cool effects to your sliders! */
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  height: 10px;
+  width: 5px;
+  border: solid 1px #ab14ab;
+  background: #ab14ab;
+  cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  cursor: pointer;
+  background: #dd65dd;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #dd65dd;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  cursor: pointer;
+  background: #dd65dd;
+}
+
+/* media queries */
+@media screen and (max-width: 500px) {
+
+ 
+  
+}
