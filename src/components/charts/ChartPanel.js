@@ -23,6 +23,7 @@ class ChartPanel extends Component {
 			chartData: {
 				labels,
 				datasets: [{
+					label: "Hourwise Channel watching distribution",
 					data,
 					backgroundColor: this.allConstants.backgroundColor,
 					borderColor: this.allConstants.borderColor,

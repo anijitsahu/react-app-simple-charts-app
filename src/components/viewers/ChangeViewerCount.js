@@ -13,6 +13,7 @@ const ChangeViewerCount = (props) => {
 					defaultValue={viewers}
 					onChange={handleChange}
 					step="1"
+					title={viewers}
 					id={id}
 				/>
 		</div>
