@@ -25,6 +25,7 @@ This is a *responsive web application* for viewing in both Mobile and Desktop.
 - Two types of chart namely *Pie* and *Doughnut* is supported
 
 <br/>
+
 - No database / storage is there. So no changes are *persistant* 
 - Mobile view is supported 
 
@@ -36,8 +37,8 @@ This is a *responsive web application* for viewing in both Mobile and Desktop.
 3. Install all the necessary dependecies by using `npm install` (optional)
 4. Navigate to the directory `cd dist`
 5. Open the `index.html` file in a web browser
-6. Change the hourly watching values of the popular channels and see the change in the graph
-7. Change the graph types from `DOUGHNUT` to `PIE` or *vice versa* to see different types of graph
+6. Change the *hourly* watching values of the popular channels and see the changes in the graph
+7. Change the graph types from `DOUGHNUT` to `PIE` or *vice versa* for different types of output
 
  
 *tested with <img src="screenshots/chrome.png" width="20px" title="Google Chrome">Google Chrome v70 and <img src="screenshots/firefox.png" width="25px" title="Firefox Developer edition">Mozilla Firefox Developer Editon*  
