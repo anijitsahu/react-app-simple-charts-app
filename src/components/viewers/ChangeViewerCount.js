@@ -9,7 +9,7 @@ const ChangeViewerCount = (props) => {
 			<label>{name}</label>
 			<input type="range"
 					min="0"
-					max="100"
+					max="24"
 					defaultValue={viewers}
 					onChange={handleChange}
 					step="1"

@@ -13,12 +13,12 @@ class ViewersPanel extends Component {
 			channelInfo: [
 				{
 					name: "Star Jalsha",
-					viewers: "70",
+					viewers: "6",
 					id: uuidv4()
 				},
 				{
 					name: "Star Sports",
-					viewers: "20",
+					viewers: "2",
 					id: uuidv4()
 				},
 				{
@@ -28,7 +28,7 @@ class ViewersPanel extends Component {
 				},
 				{
 					name: "Others",
-					viewers: "5",
+					viewers: "11",
 					id: uuidv4()
 				}
 			]

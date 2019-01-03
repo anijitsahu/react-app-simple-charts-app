@@ -26,7 +26,7 @@ class Constants {
     ]
 
     this.labels = ["Star Jalsha", "Star Sports", "National Geographic", "Others"]
-    this.data = [70, 20, 5, 5]
+    this.data = [6, 2, 5, 11]
     this.borderWidth = 1
   }
 }
