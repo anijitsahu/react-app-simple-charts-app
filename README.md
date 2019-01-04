@@ -16,15 +16,15 @@ This is a *responsive web application* for viewing in both Mobile and Desktop.
 
 ## Features
 - This is a Simple Chart Application
-- Charts are drawn using [Chart JS](https://www.npmjs.com/package/react-chartjs-2)
+- Charts are plotted using [Chart JS](https://www.npmjs.com/package/react-chartjs-2)
 - Charts are upadated when user changes the hourly watching rate of channel viewing
 
 <br/> 
 
 - Maximum and minimum values of the hourly rate is `24` and `0` respectively
-- Three types of chart namely *Pie, Doughnut* and *Bar* is supported
-- Tooltips on each of the graph is supported
-- Legend showing the data indication is supported
+- Three types of chart namely *Pie, Doughnut* and *Bar* is available
+- *Tooltips* on each of the graph is supported
+- *Legend* and *title* showing the data indication is supported
 
 <br/>
 
