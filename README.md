@@ -62,13 +62,13 @@ Desktop as well as Mobile version of the screenshots are given side by side.
 </p>
 
  <p> Bar Chart <br/> 
- <img src="screenshots/desktop 2.png" width="590px" title="Bar Chart screen"/>
- <img src="screenshots/mobile 2.png" width="190px" title="Bar Chart screen"/> 
+ <img src="screenshots/desktop 3.png" width="590px" title="Bar Chart screen"/>
+ <img src="screenshots/mobile 3.png" width="190px" title="Bar Chart screen"/> 
 </p>
 
  <p> Tooltips of each chart <br/> 
- <img src="screenshots/desktop 2.png" width="590px" title="Tooltips of each chart screen"/>
- <img src="screenshots/mobile 2.png" width="190px" title="Tooltips of each chart screen"/> 
+ <img src="screenshots/desktop 4.png" width="590px" title="Tooltips of each chart screen"/>
+ <img src="screenshots/mobile 4.png" width="190px" title="Tooltips of each chart screen"/> 
 </p>
 
 
