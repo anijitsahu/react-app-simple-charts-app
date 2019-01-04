@@ -77,6 +77,10 @@ input[type=text] {
   text-transform: uppercase;
 }
 
+.active-chart-type {
+  color: #ab14ab;
+}
+
 .chart-type:hover {
   color: #ab14ab;
   cursor: pointer;

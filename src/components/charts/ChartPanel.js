@@ -20,6 +20,7 @@ class ChartPanel extends Component {
 		// define the state with initial data
 		this.state = {
 			chartType: 'doughnut',
+			activeChart: 'doughnut',
 			chartData: {
 				labels,
 				datasets: [{
@@ -47,20 +48,21 @@ class ChartPanel extends Component {
 
 	changeChartType(event) {
 		event.persist()
-		console.log('chart type selected', event.target.id)
-		this.setState({ chartType: event.target.id })
+		let { id } = event.target
+		console.log('chart type selected', id)
+		this.setState({ chartType: id, activeChart: id })
 	}
 
 	render() {
-		let { chartData, chartType } = this.state
-		let chartTypes = ['pie', 'doughnut']
+		let { chartData, chartType, activeChart } = this.state
+		let chartTypes = ['pie', 'doughnut', 'bar']
 		// let showChart = this.chooseChart()
 		console.log('state in chart Panel', this.state)
 
 		return (
 			<div className="chart-container basic-padding">
-				<ShowChartTypes chartTypes={chartTypes} changeChartType={this.changeChartType} />
-				<ShowChart chartData={chartData} chartType={chartType}/>	
+				<ShowChartTypes chartTypes={chartTypes} changeChartType={this.changeChartType} activeChart={activeChart}/>
+				<ShowChart chartData={chartData} chartType={chartType} />
 			</div>
 		);
 	}

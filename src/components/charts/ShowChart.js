@@ -1,5 +1,5 @@
 import React from 'react'
-import { Doughnut, Pie } from 'react-chartjs-2';
+import { Doughnut, Pie, Bar } from 'react-chartjs-2';
 
 
 // Constants
@@ -30,7 +30,10 @@ const ShowChart = (props) => {
 			case 'pie':
 				return <Pie data={chartData} options={options} />;
 			case 'doughnut':
-				return <Doughnut data={chartData} options={options} />;			
+				return <Doughnut data={chartData} options={options} />;
+			case 'bar':
+				options["legend"] = { display: false }
+				return <Bar data={chartData} options={options} />;
 		}
 	}
 
