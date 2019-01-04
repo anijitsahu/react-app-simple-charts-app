@@ -24,7 +24,7 @@ This is a *responsive web application* for viewing in both Mobile and Desktop.
 - Maximum and minimum values of the hourly rate is `24` and `0` respectively
 - Three types of chart namely *Pie, Doughnut* and *Bar* is available
 - *Tooltips* on each of the graph is supported
-- *Legend* and *title* showing the data indication is supported
+- *Legend* and *title* showing for data indication is supported
 
 <br/>
 
