@@ -22,7 +22,9 @@ This is a *responsive web application* for viewing in both Mobile and Desktop.
 <br/> 
 
 - Maximum and minimum values of the hourly rate is `24` and `0` respectively
-- Two types of chart namely *Pie* and *Doughnut* is supported
+- Three types of chart namely *Pie, Doughnut* and *Bar* is supported
+- Tooltips on each of the graph is supported
+- Legend showing the data indication is supported
 
 <br/>
 
@@ -38,7 +40,7 @@ This is a *responsive web application* for viewing in both Mobile and Desktop.
 4. Navigate to the directory `cd dist`
 5. Open the `index.html` file in a web browser
 6. Change the *hourly* watching values of the popular channels and see the changes in the graph
-7. Change the graph types from `DOUGHNUT` to `PIE` or *vice versa* for different types of output
+7. Choose the graph types from `DOUGHNUT, PIE` and `BAR` for different types of output
 
  
 *tested with <img src="screenshots/chrome.png" width="20px" title="Google Chrome">Google Chrome v70 and <img src="screenshots/firefox.png" width="25px" title="Firefox Developer edition">Mozilla Firefox Developer Editon*  
@@ -57,6 +59,16 @@ Desktop as well as Mobile version of the screenshots are given side by side.
  <p> Pie Chart <br/> 
  <img src="screenshots/desktop 2.png" width="590px" title="Pie Chart screen"/>
  <img src="screenshots/mobile 2.png" width="190px" title="Pie Chart screen"/> 
+</p>
+
+ <p> Bar Chart <br/> 
+ <img src="screenshots/desktop 2.png" width="590px" title="Bar Chart screen"/>
+ <img src="screenshots/mobile 2.png" width="190px" title="Bar Chart screen"/> 
+</p>
+
+ <p> Tooltips of each chart <br/> 
+ <img src="screenshots/desktop 2.png" width="590px" title="Tooltips of each chart screen"/>
+ <img src="screenshots/mobile 2.png" width="190px" title="Tooltips of each chart screen"/> 
 </p>
 
 
