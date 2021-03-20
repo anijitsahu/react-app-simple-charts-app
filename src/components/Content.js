@@ -9,50 +9,39 @@ import ViewersPanel from './viewers/ViewersPanel'
 // constants
 import Constants from './Constants'
 
-class Content extends Component {
+const Content = () => {
 
-  constructor(props) {
-    super(props);
+  // initialize all the Constants
+  const allConstants = Constants()
 
-    // initialize all the Constants
-    this.allConstants = Constants()
-
-    this.state = {
-      labels: this.allConstants.labels,
-      data: this.allConstants.data,
+  // Initialize chart data and its modifier function
+  const [chartData, setChartData] = useState(
+    {
+      labels: allConstants.labels,
+      data: allConstants.data,
       id: uuidv4()
     }
+  )
 
-    console.log("State in Content.js", this.state)
-    this.updateCount = this.updateCount.bind(this)
-  }
-
-  updateCount(channelInfo) {
-
-    let labels = []
-    let data = []
+  const updateCount = (channelInfo) => {
+    const labels = []
+    const data = []
 
     channelInfo.forEach((ele) => {
       labels.push(ele.name)
       data.push(parseInt(ele.viewers))
     })
 
-    this.setState({ labels, data, id: uuidv4() }, () => {
-      console.log('State is updated in content ', this.state)
-    })
+    setChartData({ ...chartData, labels, data, id: uuidv4() })
   }
 
-  render() {
-
-    let { data, labels, id } = this.state
-    return (
-      <div className="content-div">
-        <ViewersPanel updateCount={this.updateCount} />
-        <ChartPanel data={data} labels={labels} id={id} />
-
-      </div>
-    );
-  }
+  const { data, labels, id } = chartData
+  return (
+    <div className="content-div">
+      <ViewersPanel updateCount={updateCount} />
+      <ChartPanel data={data} labels={labels} id={id} />
+    </div>
+  );
 }
 
 export default Content;

@@ -93,55 +93,46 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-class Content extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
-  constructor(props) {
-    super(props); // initialize all the Constants
+const Content = () => {
+  // initialize all the Constants
+  const allConstants = (0,_Constants__WEBPACK_IMPORTED_MODULE_3__.default)(); // Initialize chart data and its modifier function
 
-    this.allConstants = (0,_Constants__WEBPACK_IMPORTED_MODULE_3__.default)();
-    this.state = {
-      labels: this.allConstants.labels,
-      data: this.allConstants.data,
-      id: (0,uuid__WEBPACK_IMPORTED_MODULE_5__.default)()
-    };
-    console.log("State in Content.js", this.state);
-    this.updateCount = this.updateCount.bind(this);
-  }
+  const [chartData, setChartData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    labels: allConstants.labels,
+    data: allConstants.data,
+    id: (0,uuid__WEBPACK_IMPORTED_MODULE_5__.default)()
+  });
 
-  updateCount(channelInfo) {
-    let labels = [];
-    let data = [];
+  const updateCount = channelInfo => {
+    const labels = [];
+    const data = [];
     channelInfo.forEach(ele => {
       labels.push(ele.name);
       data.push(parseInt(ele.viewers));
     });
-    this.setState({
+    setChartData({ ...chartData,
       labels,
       data,
       id: (0,uuid__WEBPACK_IMPORTED_MODULE_5__.default)()
-    }, () => {
-      console.log('State is updated in content ', this.state);
     });
-  }
+  };
 
-  render() {
-    let {
-      data,
-      labels,
-      id
-    } = this.state;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "content-div",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_viewers_ViewersPanel__WEBPACK_IMPORTED_MODULE_2__.default, {
-        updateCount: this.updateCount
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_charts_ChartPanel__WEBPACK_IMPORTED_MODULE_1__.default, {
-        data: data,
-        labels: labels,
-        id: id
-      })]
-    });
-  }
-
-}
+  const {
+    data,
+    labels,
+    id
+  } = chartData;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    className: "content-div",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_viewers_ViewersPanel__WEBPACK_IMPORTED_MODULE_2__.default, {
+      updateCount: updateCount
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_charts_ChartPanel__WEBPACK_IMPORTED_MODULE_1__.default, {
+      data: data,
+      labels: labels,
+      id: id
+    })]
+  });
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Content);
 
