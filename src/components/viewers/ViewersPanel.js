@@ -4,12 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 // Components
 import ChangeViewerCount from './ChangeViewerCount'
 
-class ViewersPanel extends Component {
+const ViewersPanel = (props) => {
 
-	constructor(props) {
-		super(props)
-
-		this.state = {
+	// initialize viewers data and its modifier function
+	const [viewersData, setViewersData] = useState(
+		{
 			channelInfo: [
 				{
 					name: "Star Jalsha",
@@ -32,49 +31,37 @@ class ViewersPanel extends Component {
 					id: uuidv4()
 				}
 			]
-		}
+		})
 
-		this.handleChange = this.handleChange.bind(this)
-	}
+	const handleChange = (e) => {
+		const { id, value } = e.target
+		const channelInfoNew = [...viewersData.channelInfo]
 
-	handleChange(event) {
-		event.persist()
-		let { id, value } = event.target
-		// console.log('function reached... value is', id, ' and value', value)
-
-		let channelInfoNew = [...this.state.channelInfo]
-
+		// update the viewers value
 		channelInfoNew.forEach((ele, index, arrayElements) => {
 			if (ele.id == id) {
 				arrayElements[index].viewers = value
 			}
 		})
 
-		this.setState({ channelInfo: channelInfoNew }, () => {
-			// console.log('State is updated', this.state)
-			this.props.updateCount(channelInfoNew)
-		})
+		props.updateViewersCount(channelInfoNew)
+		setViewersData({ ...viewersData, channelInfo: channelInfoNew })
 	}
 
-	render() {
-		let { channelInfo } = this.state
-
-		return (
-			<div className="viewers-panel basic-padding">
-				<div className="viewers-panel-title">Hourwise channel watching details</div>
-				<div className="view-distribution">
-					{
-						channelInfo.map((ele) => {
-							return (
-								<ChangeViewerCount key={ele.id} {...ele} handleChange={this.handleChange} />
-							)
-						})
-					}
-				</div>
+	return (
+		<div className="viewers-panel basic-padding">
+			<div className="viewers-panel-title">Hourwise channel watching details</div>
+			<div className="view-distribution">
+				{
+					viewersData.channelInfo.map((ele) => {
+						return (
+							<ChangeViewerCount key={ele.id} {...ele} handleChange={handleChange} />
+						)
+					})
+				}
 			</div>
-		);
-
-	}
+		</div>
+	);
 }
 
 export default ViewersPanel

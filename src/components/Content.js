@@ -23,7 +23,7 @@ const Content = () => {
     }
   )
 
-  const updateCount = (channelInfo) => {
+  const updateViewersCount = (channelInfo) => {
     const labels = []
     const data = []
 
@@ -38,7 +38,7 @@ const Content = () => {
   const { data, labels, id } = chartData
   return (
     <div className="content-div">
-      <ViewersPanel updateCount={updateCount} />
+      <ViewersPanel updateViewersCount={updateViewersCount} />
       <ChartPanel data={data} labels={labels} id={id} />
     </div>
   );

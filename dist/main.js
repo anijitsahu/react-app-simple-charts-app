@@ -103,7 +103,7 @@ const Content = () => {
     id: (0,uuid__WEBPACK_IMPORTED_MODULE_5__.default)()
   });
 
-  const updateCount = channelInfo => {
+  const updateViewersCount = channelInfo => {
     const labels = [];
     const data = [];
     channelInfo.forEach(ele => {
@@ -125,7 +125,7 @@ const Content = () => {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "content-div",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_viewers_ViewersPanel__WEBPACK_IMPORTED_MODULE_2__.default, {
-      updateCount: updateCount
+      updateViewersCount: updateViewersCount
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_charts_ChartPanel__WEBPACK_IMPORTED_MODULE_1__.default, {
       data: data,
       labels: labels,
@@ -169,8 +169,7 @@ const ChartPanel = ({
   labels,
   id
 }) => {
-  console.log("id received", id, " and data received ", data); // initialize all the Constants
-
+  // initialize all the Constants
   const allConstants = (0,_Constants__WEBPACK_IMPORTED_MODULE_3__.default)(); // define the state with initial data and its modifier function
 
   const [chartPanelData, setChartPanelData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
@@ -186,7 +185,8 @@ const ChartPanel = ({
         borderWidth: allConstants.borderWidth
       }]
     }
-  });
+  }); // change the chartdata whenever a new id received
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     modifyDataset();
   }, [id]);
@@ -206,7 +206,6 @@ const ChartPanel = ({
     const {
       id
     } = e.target;
-    console.log('chart type selected', id);
     setChartPanelData({ ...chartPanelData,
       chartType: id,
       activeChart: id
@@ -219,7 +218,6 @@ const ChartPanel = ({
     activeChart
   } = chartPanelData;
   const chartTypes = ['pie', 'doughnut', 'bar'];
-  console.log('state in chart Panel', chartPanelData);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "chart-container basic-padding",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ShowChartTypes__WEBPACK_IMPORTED_MODULE_1__.default, {
@@ -277,8 +275,6 @@ const ShowChart = props => {
   };
 
   const chooseChart = () => {
-    console.log('chooseChart received...', chartType, 'and chart Data\n', chartData);
-
     switch (chartType) {
       case 'pie':
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_0__.Pie, {
@@ -435,7 +431,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // ChangeViewerCount component
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (props => {
-  let {
+  const {
     name,
     viewers,
     id,
@@ -482,73 +478,61 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-class ViewersPanel extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      channelInfo: [{
-        name: "Star Jalsha",
-        viewers: "6",
-        id: (0,uuid__WEBPACK_IMPORTED_MODULE_3__.default)()
-      }, {
-        name: "Star Sports",
-        viewers: "2",
-        id: (0,uuid__WEBPACK_IMPORTED_MODULE_3__.default)()
-      }, {
-        name: "National Geograpic",
-        viewers: "5",
-        id: (0,uuid__WEBPACK_IMPORTED_MODULE_3__.default)()
-      }, {
-        name: "Others",
-        viewers: "11",
-        id: (0,uuid__WEBPACK_IMPORTED_MODULE_3__.default)()
-      }]
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
+const ViewersPanel = props => {
+  // initialize viewers data and its modifier function
+  const [viewersData, setViewersData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    channelInfo: [{
+      name: "Star Jalsha",
+      viewers: "6",
+      id: (0,uuid__WEBPACK_IMPORTED_MODULE_3__.default)()
+    }, {
+      name: "Star Sports",
+      viewers: "2",
+      id: (0,uuid__WEBPACK_IMPORTED_MODULE_3__.default)()
+    }, {
+      name: "National Geograpic",
+      viewers: "5",
+      id: (0,uuid__WEBPACK_IMPORTED_MODULE_3__.default)()
+    }, {
+      name: "Others",
+      viewers: "11",
+      id: (0,uuid__WEBPACK_IMPORTED_MODULE_3__.default)()
+    }]
+  });
 
-  handleChange(event) {
-    event.persist();
-    let {
+  const handleChange = e => {
+    const {
       id,
       value
-    } = event.target; // console.log('function reached... value is', id, ' and value', value)
+    } = e.target;
+    const channelInfoNew = [...viewersData.channelInfo]; // update the viewers value
 
-    let channelInfoNew = [...this.state.channelInfo];
     channelInfoNew.forEach((ele, index, arrayElements) => {
       if (ele.id == id) {
         arrayElements[index].viewers = value;
       }
     });
-    this.setState({
+    props.updateViewersCount(channelInfoNew);
+    setViewersData({ ...viewersData,
       channelInfo: channelInfoNew
-    }, () => {
-      // console.log('State is updated', this.state)
-      this.props.updateCount(channelInfoNew);
     });
-  }
+  };
 
-  render() {
-    let {
-      channelInfo
-    } = this.state;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "viewers-panel basic-padding",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "viewers-panel-title",
-        children: "Hourwise channel watching details"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "view-distribution",
-        children: channelInfo.map(ele => {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ChangeViewerCount__WEBPACK_IMPORTED_MODULE_1__.default, { ...ele,
-            handleChange: this.handleChange
-          }, ele.id);
-        })
-      })]
-    });
-  }
-
-}
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "viewers-panel basic-padding",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "viewers-panel-title",
+      children: "Hourwise channel watching details"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "view-distribution",
+      children: viewersData.channelInfo.map(ele => {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ChangeViewerCount__WEBPACK_IMPORTED_MODULE_1__.default, { ...ele,
+          handleChange: handleChange
+        }, ele.id);
+      })
+    })]
+  });
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ViewersPanel);
 

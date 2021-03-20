@@ -1,7 +1,7 @@
 // ChangeViewerCount component
 export default (props) => {
 
-	let { name, viewers, id, handleChange } = props
+	const { name, viewers, id, handleChange } = props
 	return (
 		<div className="change-count basic-padding">
 			<label>{name}</label>

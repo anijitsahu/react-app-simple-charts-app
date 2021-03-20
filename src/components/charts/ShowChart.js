@@ -20,7 +20,6 @@ const ShowChart = (props) => {
 		}
 	}
 	const chooseChart = () => {
-		console.log('chooseChart received...', chartType, 'and chart Data\n', chartData)
 
 		switch (chartType) {
 			case 'pie':
