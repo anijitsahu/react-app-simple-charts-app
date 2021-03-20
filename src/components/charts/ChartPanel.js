@@ -1,73 +1,59 @@
-import { useState, Component } from 'react';
-import { Doughnut, Bar, Pie } from 'react-chartjs-2';
-
-// Constants
-import Constants from '../Constants'
+// dependencies
+import { useEffect, useState } from 'react';
 
 // components
 import ShowChartTypes from './ShowChartTypes'
 import ShowChart from './ShowChart'
 
-class ChartPanel extends Component {
-	constructor(props) {
-		super(props)
-		let { data, labels } = this.props
+// Constants
+import Constants from '../Constants'
 
-		// initialize all the Constants
-		this.allConstants = Constants()
+const ChartPanel = ({ data, labels, id }) => {
+	// initialize all the Constants
+	const allConstants = Constants()
 
-		// define the state with initial data
-		this.state = {
+	// define the state with initial data and its modifier function
+	const [chartPanelData, setChartPanelData] = useState(
+		{
 			chartType: 'doughnut',
 			activeChart: 'doughnut',
 			chartData: {
 				labels,
 				datasets: [{
-					label: this.allConstants.datasetLabel,
+					label: allConstants.datasetLabel,
 					data,
-					backgroundColor: this.allConstants.backgroundColor,
-					borderColor: this.allConstants.borderColor,
-					borderWidth: this.allConstants.borderWidth
+					backgroundColor: allConstants.backgroundColor,
+					borderColor: allConstants.borderColor,
+					borderWidth: allConstants.borderWidth
 				}],
 			}
-		}
+		})
 
-		this.changeChartType = this.changeChartType.bind(this)
+	// change the chartdata whenever a new id received
+	useEffect(() => {
+		modifyDataset()
+	}, [id])
+
+	const modifyDataset = () => {
+		let newDataset = [...chartPanelData.chartData.datasets]
+		newDataset[0].data = data
+		setChartPanelData({ ...chartPanelData, chartData: { labels, datasets: newDataset } })
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.id != this.props.id) {
-			let { chartData } = this.state
-			chartData["labels"] = nextProps.labels
-			chartData["datasets"][0]["data"] = nextProps.data
-
-			this.setState({ chartData })
-		}
+	const changeChartType = (e) => {
+		const { id } = e.target
+		setChartPanelData({ ...chartPanelData, chartType: id, activeChart: id })
 	}
 
-	changeChartType(event) {
-		event.persist()
-		let { id } = event.target
-		console.log('chart type selected', id)
-		this.setState({ chartType: id, activeChart: id })
-	}
+	const { chartData, chartType, activeChart } = chartPanelData
+	const chartTypes = ['pie', 'doughnut', 'bar']
 
-	render() {
-		let { chartData, chartType, activeChart } = this.state
-		let chartTypes = ['pie', 'doughnut', 'bar']
-		// let showChart = this.chooseChart()
-		console.log('state in chart Panel', this.state)
-
-		return (
-			<div className="chart-container basic-padding">
-				<ShowChartTypes chartTypes={chartTypes} changeChartType={this.changeChartType} activeChart={activeChart} />
-				<ShowChart chartData={chartData} chartType={chartType} />
-			</div>
-		);
-	}
+	return (
+		<div className="chart-container basic-padding">
+			<ShowChartTypes chartTypes={chartTypes} changeChartType={changeChartType} activeChart={activeChart} />
+			<ShowChart chartData={chartData} chartType={chartType} />
+		</div>
+	);
 }
-
-
-
 
 export default ChartPanel

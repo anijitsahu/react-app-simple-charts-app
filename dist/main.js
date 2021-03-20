@@ -150,96 +150,88 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/es/index.js");
-/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Constants */ "./src/components/Constants.js");
-/* harmony import */ var _ShowChartTypes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ShowChartTypes */ "./src/components/charts/ShowChartTypes.js");
-/* harmony import */ var _ShowChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ShowChart */ "./src/components/charts/ShowChart.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
- // Constants
-
+/* harmony import */ var _ShowChartTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShowChartTypes */ "./src/components/charts/ShowChartTypes.js");
+/* harmony import */ var _ShowChart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ShowChart */ "./src/components/charts/ShowChart.js");
+/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Constants */ "./src/components/Constants.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+// dependencies
  // components
 
 
+ // Constants
 
 
 
 
-class ChartPanel extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
-  constructor(props) {
-    super(props);
-    let {
-      data,
-      labels
-    } = this.props; // initialize all the Constants
 
-    this.allConstants = (0,_Constants__WEBPACK_IMPORTED_MODULE_2__.default)(); // define the state with initial data
+const ChartPanel = ({
+  data,
+  labels,
+  id
+}) => {
+  console.log("id received", id, " and data received ", data); // initialize all the Constants
 
-    this.state = {
-      chartType: 'doughnut',
-      activeChart: 'doughnut',
+  const allConstants = (0,_Constants__WEBPACK_IMPORTED_MODULE_3__.default)(); // define the state with initial data and its modifier function
+
+  const [chartPanelData, setChartPanelData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    chartType: 'doughnut',
+    activeChart: 'doughnut',
+    chartData: {
+      labels,
+      datasets: [{
+        label: allConstants.datasetLabel,
+        data,
+        backgroundColor: allConstants.backgroundColor,
+        borderColor: allConstants.borderColor,
+        borderWidth: allConstants.borderWidth
+      }]
+    }
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    modifyDataset();
+  }, [id]);
+
+  const modifyDataset = () => {
+    let newDataset = [...chartPanelData.chartData.datasets];
+    newDataset[0].data = data;
+    setChartPanelData({ ...chartPanelData,
       chartData: {
         labels,
-        datasets: [{
-          label: this.allConstants.datasetLabel,
-          data,
-          backgroundColor: this.allConstants.backgroundColor,
-          borderColor: this.allConstants.borderColor,
-          borderWidth: this.allConstants.borderWidth
-        }]
+        datasets: newDataset
       }
-    };
-    this.changeChartType = this.changeChartType.bind(this);
-  }
+    });
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.id != this.props.id) {
-      let {
-        chartData
-      } = this.state;
-      chartData["labels"] = nextProps.labels;
-      chartData["datasets"][0]["data"] = nextProps.data;
-      this.setState({
-        chartData
-      });
-    }
-  }
-
-  changeChartType(event) {
-    event.persist();
-    let {
+  const changeChartType = e => {
+    const {
       id
-    } = event.target;
+    } = e.target;
     console.log('chart type selected', id);
-    this.setState({
+    setChartPanelData({ ...chartPanelData,
       chartType: id,
       activeChart: id
     });
-  }
+  };
 
-  render() {
-    let {
-      chartData,
-      chartType,
-      activeChart
-    } = this.state;
-    let chartTypes = ['pie', 'doughnut', 'bar']; // let showChart = this.chooseChart()
-
-    console.log('state in chart Panel', this.state);
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "chart-container basic-padding",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_ShowChartTypes__WEBPACK_IMPORTED_MODULE_3__.default, {
-        chartTypes: chartTypes,
-        changeChartType: this.changeChartType,
-        activeChart: activeChart
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_ShowChart__WEBPACK_IMPORTED_MODULE_4__.default, {
-        chartData: chartData,
-        chartType: chartType
-      })]
-    });
-  }
-
-}
+  const {
+    chartData,
+    chartType,
+    activeChart
+  } = chartPanelData;
+  const chartTypes = ['pie', 'doughnut', 'bar'];
+  console.log('state in chart Panel', chartPanelData);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    className: "chart-container basic-padding",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ShowChartTypes__WEBPACK_IMPORTED_MODULE_1__.default, {
+      chartTypes: chartTypes,
+      changeChartType: changeChartType,
+      activeChart: activeChart
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ShowChart__WEBPACK_IMPORTED_MODULE_2__.default, {
+      chartData: chartData,
+      chartType: chartType
+    })]
+  });
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChartPanel);
 
