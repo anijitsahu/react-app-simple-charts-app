@@ -1,14 +1,10 @@
-import React from 'react'
 import { Doughnut, Pie, Bar } from 'react-chartjs-2';
-
 
 // Constants
 import Constants from '../Constants'
 
 const ShowChart = (props) => {
-
 	let { chartType, chartData } = props
-
 	let allConstants = new Constants()
 	let options = {
 		maintainAspectRatio: false,

@@ -1,7 +1,5 @@
-import React from 'react';
-
-
-const ShowChartTypes = (props) => {
+// ShowCharttTypes component
+export default (props) => {
 	let { chartTypes, changeChartType, activeChart } = props
 
 	return (
@@ -25,12 +23,9 @@ const ShowChartTypes = (props) => {
 // internal component
 const Separator = ({ value }) => {
 	return (
-		<React.Fragment>
+		<>
 			{value}
 			<span className="basic-padding separator">|</span>
-		</React.Fragment>
+		</>
 	)
 }
-
-
-export default ShowChartTypes;

@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import { useState, Component } from 'react';
 import { Doughnut, Bar, Pie } from 'react-chartjs-2';
-
 
 // Constants
 import Constants from '../Constants'
@@ -61,7 +60,7 @@ class ChartPanel extends Component {
 
 		return (
 			<div className="chart-container basic-padding">
-				<ShowChartTypes chartTypes={chartTypes} changeChartType={this.changeChartType} activeChart={activeChart}/>
+				<ShowChartTypes chartTypes={chartTypes} changeChartType={this.changeChartType} activeChart={activeChart} />
 				<ShowChart chartData={chartData} chartType={chartType} />
 			</div>
 		);
