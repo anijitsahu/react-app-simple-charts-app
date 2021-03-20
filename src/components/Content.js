@@ -1,6 +1,6 @@
 // dependencies
 import React, { Component } from 'react';
-import uuidv4 from 'uuid/v4'
+import { v4 as uuidv4 } from 'uuid/v4'
 
 // components
 import ChartPanel from './charts/ChartPanel'
