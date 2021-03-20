@@ -5,7 +5,7 @@ import Constants from '../Constants'
 
 const ShowChart = (props) => {
 	let { chartType, chartData } = props
-	let allConstants = new Constants()
+	let allConstants = Constants()
 	let options = {
 		maintainAspectRatio: false,
 		legend: {

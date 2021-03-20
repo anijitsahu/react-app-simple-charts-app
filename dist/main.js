@@ -46,22 +46,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-// import React, { Component } from 'react';
-class Constants {
-  constructor() {
-    // list of all the constants
+const Constants = () => {
+  // list of all the constants
+  return {
     // all the colors as Array
-    this.backgroundColor = ['rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)', 'rgba(255, 206, 86, 0.8)', 'rgba(75, 192, 192, 0.8)', 'rgba(153, 102, 255, 0.8)', 'rgba(255, 159, 64, 0.8)'];
-    this.borderColor = ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)']; // labels and data related constants
-
-    this.labels = ["Star Jalsha", "Star Sports", "National Geographic", "Others"];
-    this.data = [6, 2, 5, 11];
-    this.borderWidth = 1;
-    this.datasetLabel = "Hourwise Channel watching distribution";
-    this.title = "Hourwise channel watching distribution graph";
-  }
-
-}
+    backgroundColor: ['rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)', 'rgba(255, 206, 86, 0.8)', 'rgba(75, 192, 192, 0.8)', 'rgba(153, 102, 255, 0.8)', 'rgba(255, 159, 64, 0.8)'],
+    borderColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+    // labels and data related constants
+    labels: ["Star Jalsha", "Star Sports", "National Geographic", "Others"],
+    data: [6, 2, 5, 11],
+    borderWidth: 1,
+    datasetLabel: "Hourwise Channel watching distribution",
+    title: "Hourwise channel watching distribution graph"
+  };
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Constants);
 
@@ -96,18 +94,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class Content extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
-  // static propTypes = {
-  //     className: PropTypes.string,
-  // };
   constructor(props) {
     super(props); // initialize all the Constants
 
-    this.allConstants = new _Constants__WEBPACK_IMPORTED_MODULE_3__.default();
+    this.allConstants = (0,_Constants__WEBPACK_IMPORTED_MODULE_3__.default)();
     this.state = {
       labels: this.allConstants.labels,
       data: this.allConstants.data,
       id: (0,uuid__WEBPACK_IMPORTED_MODULE_5__.default)()
     };
+    console.log("State in Content.js", this.state);
     this.updateCount = this.updateCount.bind(this);
   }
 
@@ -186,7 +182,7 @@ class ChartPanel extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
       labels
     } = this.props; // initialize all the Constants
 
-    this.allConstants = new _Constants__WEBPACK_IMPORTED_MODULE_2__.default(); // define the state with initial data
+    this.allConstants = (0,_Constants__WEBPACK_IMPORTED_MODULE_2__.default)(); // define the state with initial data
 
     this.state = {
       chartType: 'doughnut',
@@ -282,7 +278,7 @@ const ShowChart = props => {
     chartType,
     chartData
   } = props;
-  let allConstants = new _Constants__WEBPACK_IMPORTED_MODULE_1__.default();
+  let allConstants = (0,_Constants__WEBPACK_IMPORTED_MODULE_1__.default)();
   let options = {
     maintainAspectRatio: false,
     legend: {
@@ -451,24 +447,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-
-
-const ChangeViewerCount = props => {
+// ChangeViewerCount component
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (props => {
   let {
     name,
     viewers,
     id,
     handleChange
   } = props;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: "change-count basic-padding",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("label", {
       children: name
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
       type: "range",
       min: "0",
       max: "24",
@@ -479,9 +473,7 @@ const ChangeViewerCount = props => {
       id: id
     })]
   });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ChangeViewerCount);
+});
 
 /***/ }),
 

@@ -10,15 +10,12 @@ import ViewersPanel from './viewers/ViewersPanel'
 import Constants from './Constants'
 
 class Content extends Component {
-  // static propTypes = {
-  //     className: PropTypes.string,
-  // };
 
   constructor(props) {
     super(props);
 
     // initialize all the Constants
-    this.allConstants = new Constants()
+    this.allConstants = Constants()
 
     this.state = {
       labels: this.allConstants.labels,
@@ -26,6 +23,7 @@ class Content extends Component {
       id: uuidv4()
     }
 
+    console.log("State in Content.js", this.state)
     this.updateCount = this.updateCount.bind(this)
   }
 

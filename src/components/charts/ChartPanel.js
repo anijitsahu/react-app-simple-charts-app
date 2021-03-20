@@ -14,7 +14,7 @@ class ChartPanel extends Component {
 		let { data, labels } = this.props
 
 		// initialize all the Constants
-		this.allConstants = new Constants()
+		this.allConstants = Constants()
 
 		// define the state with initial data
 		this.state = {
